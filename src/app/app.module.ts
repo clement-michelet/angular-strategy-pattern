@@ -5,10 +5,14 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
 import { CalculatorService } from "./calculator/calculator.service";
-import { AdditionOperandStrategy } from "./calculator/operand/addition-operand-strategy";
-import { SubstractionOperandStrategy } from "./calculator/operand/substraction-operand-strategy";
-import { MultiplicationOperandStrategy } from "./calculator/operand/multiplication-operand-strategy";
 import { OperandStrategy } from "./calculator/operand/operand-strategy";
+import {
+    AdditionOperandStrategy,
+    SubstractionOperandStrategy,
+    MultiplicationOperandStrategy,
+    DivisionOperandStrategy,
+    ExponentiationOperandStrategy
+} from "./calculator/operand";
 
 export function calculatorServiceFactory(...operands: Array<OperandStrategy>): CalculatorService {
     return new CalculatorService(operands);
@@ -17,7 +21,13 @@ export function calculatorServiceFactory(...operands: Array<OperandStrategy>): C
 const CALCULATOR_PROVIDER: FactoryProvider = {
     provide: CalculatorService,
     useFactory: calculatorServiceFactory,
-    deps: [AdditionOperandStrategy, SubstractionOperandStrategy, MultiplicationOperandStrategy]
+    deps: [
+        AdditionOperandStrategy,
+        SubstractionOperandStrategy,
+        MultiplicationOperandStrategy,
+        DivisionOperandStrategy,
+        ExponentiationOperandStrategy
+    ]
 };
 
 @NgModule({
@@ -34,6 +44,8 @@ const CALCULATOR_PROVIDER: FactoryProvider = {
         AdditionOperandStrategy,
         SubstractionOperandStrategy,
         MultiplicationOperandStrategy,
+        DivisionOperandStrategy,
+        ExponentiationOperandStrategy,
         CALCULATOR_PROVIDER,
     ],
     bootstrap: [AppComponent]

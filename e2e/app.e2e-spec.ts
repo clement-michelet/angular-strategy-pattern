@@ -55,4 +55,30 @@ describe('angular-strategy-pattern App', function () {
         // Then
         expect(page.getResultText()).toBe('50');
     });
+
+    it('should display the result of the division', () => {
+        // Given
+        page.setLeftValue(10);
+        page.setRightValue(5);
+        page.setOperand('÷');
+
+        // When
+        page.getCalculateButton().click();
+
+        // Then
+        expect(page.getResultText()).toBe('2');
+    });
+
+    it('should display the result of the exponentiation', () => {
+        // Given
+        page.setLeftValue(2);
+        page.setRightValue(4);
+        page.setOperand('^');
+
+        // When
+        page.getCalculateButton().click();
+
+        // Then
+        expect(page.getResultText()).toBe('16');
+    });
 });
