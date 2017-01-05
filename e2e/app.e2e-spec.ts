@@ -29,4 +29,30 @@ describe('angular-strategy-pattern App', function () {
         // Then
         expect(page.getResultText()).toBe('15');
     });
+
+    it('should display the result of the substraction', () => {
+        // Given
+        page.setLeftValue(5);
+        page.setRightValue(10);
+        page.setOperand('-');
+
+        // When
+        page.getCalculateButton().click();
+
+        // Then
+        expect(page.getResultText()).toBe('-5');
+    });
+
+    it('should display the result of the multiplication', () => {
+        // Given
+        page.setLeftValue(5);
+        page.setRightValue(10);
+        page.setOperand('x');
+
+        // When
+        page.getCalculateButton().click();
+
+        // Then
+        expect(page.getResultText()).toBe('50');
+    });
 });

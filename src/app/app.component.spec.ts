@@ -1,11 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { TestBed, async } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
 import { CalculatorService } from "./calculator/calculator.service";
-import { FormsModule } from "@angular/forms";
-import { AdditionOperandStrategy } from "./calculator/operand/addition-operand-strategy";
 
 describe('AppComponent', () => {
     beforeEach(() => {
@@ -18,8 +17,7 @@ describe('AppComponent', () => {
                 CalculatorComponent
             ],
             providers: [
-                CalculatorService,
-                AdditionOperandStrategy
+                {provide: CalculatorService, useValue: {}}
             ]
         });
         TestBed.compileComponents();

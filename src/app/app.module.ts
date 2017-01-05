@@ -6,6 +6,8 @@ import { AppComponent } from "./app.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
 import { CalculatorService } from "./calculator/calculator.service";
 import { AdditionOperandStrategy } from "./calculator/operand/addition-operand-strategy";
+import { SubstractionOperandStrategy } from "./calculator/operand/substraction-operand-strategy";
+import { MultiplicationOperandStrategy } from "./calculator/operand/multiplication-operand-strategy";
 
 @NgModule({
     declarations: [
@@ -17,7 +19,7 @@ import { AdditionOperandStrategy } from "./calculator/operand/addition-operand-s
         FormsModule,
         HttpModule
     ],
-    providers: [CalculatorService, AdditionOperandStrategy],
+    providers: [CalculatorService, AdditionOperandStrategy, SubstractionOperandStrategy, MultiplicationOperandStrategy],
     bootstrap: [AppComponent]
 })
 export class AppModule {

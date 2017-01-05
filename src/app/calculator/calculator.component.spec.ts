@@ -3,18 +3,22 @@ import { By } from "@angular/platform-browser";
 import { CalculatorComponent } from "./calculator.component";
 import { CalculatorService } from "./calculator.service";
 import { FormsModule } from "@angular/forms";
-import { AdditionOperandStrategy } from "./operand/addition-operand-strategy";
 
 describe('CalculatorComponent', () => {
     let component: CalculatorComponent;
+    let calculatorServiceSpy;
     let fixture: ComponentFixture<CalculatorComponent>;
 
     beforeEach(async(() => {
+        calculatorServiceSpy = jasmine.createSpyObj('CalculatorService', ['compute']);
+
         TestBed
             .configureTestingModule({
                 imports: [FormsModule],
                 declarations: [CalculatorComponent],
-                providers: [CalculatorService, AdditionOperandStrategy]
+                providers: [
+                    {provide: CalculatorService, useValue: calculatorServiceSpy},
+                ]
             })
             .compileComponents();
     }));
@@ -72,6 +76,8 @@ describe('CalculatorComponent', () => {
 
     it('should update the result after computation', () => {
         // Given
+        calculatorServiceSpy.compute.and.returnValue(15);
+
         component.result = null;
         component.leftValue = 5;
         component.rightValue = 10;

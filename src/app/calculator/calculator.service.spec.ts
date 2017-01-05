@@ -1,11 +1,18 @@
 import { TestBed, inject } from "@angular/core/testing";
 import { CalculatorService } from "./calculator.service";
 import { AdditionOperandStrategy } from "./operand/addition-operand-strategy";
+import { SubstractionOperandStrategy } from "./operand/substraction-operand-strategy";
+import { MultiplicationOperandStrategy } from "./operand/multiplication-operand-strategy";
 
 describe('CalculatorService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [CalculatorService, AdditionOperandStrategy]
+            providers: [
+                CalculatorService,
+                AdditionOperandStrategy,
+                SubstractionOperandStrategy,
+                MultiplicationOperandStrategy
+            ]
         });
     });
 
@@ -38,6 +45,40 @@ describe('CalculatorService', () => {
         dataProvider.forEach((data) => {
             // When
             const result = service.compute(data.leftValue, data.rightValue, 'addition');
+
+            // Then
+            expect(result).toBe(data.expectedValue);
+        });
+    }));
+
+    it('should return the substraction result', inject([CalculatorService], (service: CalculatorService) => {
+        const dataProvider = [
+            {leftValue: 1, rightValue: 1, expectedValue: 0},
+            {leftValue: 1, rightValue: 2, expectedValue: -1},
+            {leftValue: 5, rightValue: 3, expectedValue: 2}
+        ];
+
+        // Given
+        dataProvider.forEach((data) => {
+            // When
+            const result = service.compute(data.leftValue, data.rightValue, '-');
+
+            // Then
+            expect(result).toBe(data.expectedValue);
+        });
+    }));
+
+    it('should return the multiplication result', inject([CalculatorService], (service: CalculatorService) => {
+        const dataProvider = [
+            {leftValue: 50, rightValue: -1, expectedValue: -50},
+            {leftValue: 1, rightValue: 2, expectedValue: 2},
+            {leftValue: 5, rightValue: 3, expectedValue: 15}
+        ];
+
+        // Given
+        dataProvider.forEach((data) => {
+            // When
+            const result = service.compute(data.leftValue, data.rightValue, 'x');
 
             // Then
             expect(result).toBe(data.expectedValue);
