@@ -64,10 +64,10 @@ describe('CalculatorComponent', () => {
         expect(inputElements.length).toBe(2);
     });
 
-    it('should have an addition operand selector', () => {
-        const additionOperandSelector = fixture.debugElement.query(By.css('.calculator__operand'));
+    it('should have an operand selector', () => {
+        const operandSelector = fixture.debugElement.query(By.css('.calculator__operand'));
 
-        expect(additionOperandSelector).not.toBeNull();
+        expect(operandSelector).not.toBeNull();
     });
 
     it('should update the result after computation', () => {
