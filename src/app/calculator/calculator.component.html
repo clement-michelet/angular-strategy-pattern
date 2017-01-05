@@ -1,3 +1,16 @@
-<p>
-  calculator works!
-</p>
+<table class="calculator calculator--table">
+    <thead>
+    <tr>
+        <th colspan="3" class="calculator__tooltip">Enter 2 numbers and select an operand</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>Results:</th>
+        <th colspan="2" class="calculator__result" [class.state--invalid]="!result">{{result ? result : 'N/A'}}</th>
+    </tr>
+    </tfoot>
+</table>
