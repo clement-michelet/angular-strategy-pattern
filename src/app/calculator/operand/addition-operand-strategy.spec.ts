@@ -7,11 +7,9 @@ describe('AdditionOperandStrategy', () => {
         strategy = new AdditionOperandStrategy;
     });
 
-    it(`should support '+' operand`, () => {
+    it(`should support '+' or 'addition' operand`, () => {
+        expect(strategy.support('-')).toBeFalsy();
         expect(strategy.support('+')).toBeTruthy();
-    });
-
-    it(`should support 'addition' operand`, () => {
         expect(strategy.support('addition')).toBeTruthy();
     });
 
