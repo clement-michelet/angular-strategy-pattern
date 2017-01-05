@@ -1,14 +1,14 @@
-import { AngularStrategyPatternPage } from './app.po';
+import { AngularStrategyPatternPage } from "./app.po";
 
-describe('angular-strategy-pattern App', function() {
-  let page: AngularStrategyPatternPage;
+describe('angular-strategy-pattern App', function () {
+    let page: AngularStrategyPatternPage;
 
-  beforeEach(() => {
-    page = new AngularStrategyPatternPage();
-  });
+    beforeEach(() => {
+        page = new AngularStrategyPatternPage();
+    });
 
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
-  });
+    it('should display message saying Calculator', () => {
+        page.navigateTo();
+        expect(page.getParagraphText()).toEqual('Calculator');
+    });
 });
