@@ -1,10 +1,11 @@
 import { TestBed, inject } from "@angular/core/testing";
 import { CalculatorService } from "./calculator.service";
+import { AdditionOperandStrategy } from "./operand/addition-operand-strategy";
 
 describe('CalculatorService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [CalculatorService]
+            providers: [CalculatorService, AdditionOperandStrategy]
         });
     });
 

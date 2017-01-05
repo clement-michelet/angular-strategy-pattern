@@ -5,6 +5,7 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
 import { CalculatorService } from "./calculator/calculator.service";
+import { AdditionOperandStrategy } from "./calculator/operand/addition-operand-strategy";
 
 @NgModule({
     declarations: [
@@ -16,7 +17,7 @@ import { CalculatorService } from "./calculator/calculator.service";
         FormsModule,
         HttpModule
     ],
-    providers: [CalculatorService],
+    providers: [CalculatorService, AdditionOperandStrategy],
     bootstrap: [AppComponent]
 })
 export class AppModule {

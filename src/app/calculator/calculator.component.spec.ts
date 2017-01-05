@@ -3,6 +3,7 @@ import { By } from "@angular/platform-browser";
 import { CalculatorComponent } from "./calculator.component";
 import { CalculatorService } from "./calculator.service";
 import { FormsModule } from "@angular/forms";
+import { AdditionOperandStrategy } from "./operand/addition-operand-strategy";
 
 describe('CalculatorComponent', () => {
     let component: CalculatorComponent;
@@ -13,7 +14,7 @@ describe('CalculatorComponent', () => {
             .configureTestingModule({
                 imports: [FormsModule],
                 declarations: [CalculatorComponent],
-                providers: [CalculatorService]
+                providers: [CalculatorService, AdditionOperandStrategy]
             })
             .compileComponents();
     }));

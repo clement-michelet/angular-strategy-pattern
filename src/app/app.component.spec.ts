@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
 import { CalculatorService } from "./calculator/calculator.service";
 import { FormsModule } from "@angular/forms";
+import { AdditionOperandStrategy } from "./calculator/operand/addition-operand-strategy";
 
 describe('AppComponent', () => {
     beforeEach(() => {
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
                 CalculatorComponent
             ],
             providers: [
-                CalculatorService
+                CalculatorService,
+                AdditionOperandStrategy
             ]
         });
         TestBed.compileComponents();
