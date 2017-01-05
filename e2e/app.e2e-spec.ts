@@ -5,10 +5,28 @@ describe('angular-strategy-pattern App', function () {
 
     beforeEach(() => {
         page = new AngularStrategyPatternPage();
+        page.navigateTo();
     });
 
     it('should display message saying Calculator', () => {
-        page.navigateTo();
         expect(page.getParagraphText()).toEqual('Calculator');
+    });
+
+    it(`should display 'N/A' as result at initial state`, () => {
+        // Then
+        expect(page.getResultText()).toBe('N/A');
+    });
+
+    it('should display the result of the addition', () => {
+        // Given
+        page.setLeftValue(5);
+        page.setRightValue(10);
+        page.setOperand('+');
+
+        // When
+        page.getCalculateButton().click();
+
+        // Then
+        expect(page.getResultText()).toBe('15');
     });
 });

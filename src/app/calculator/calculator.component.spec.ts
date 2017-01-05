@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { CalculatorComponent } from "./calculator.component";
 import { By } from "@angular/platform-browser";
+import { CalculatorComponent } from "./calculator.component";
+import { CalculatorService } from "./calculator.service";
+import { FormsModule } from "@angular/forms";
 
 describe('CalculatorComponent', () => {
     let component: CalculatorComponent;
@@ -9,7 +11,9 @@ describe('CalculatorComponent', () => {
     beforeEach(async(() => {
         TestBed
             .configureTestingModule({
-                declarations: [CalculatorComponent]
+                imports: [FormsModule],
+                declarations: [CalculatorComponent],
+                providers: [CalculatorService]
             })
             .compileComponents();
     }));
@@ -29,9 +33,28 @@ describe('CalculatorComponent', () => {
         expect(tooltipElement.nativeElement.textContent).toContain("Enter 2 numbers and select an operand");
     });
 
-    it('should display by default N/A as the result', () => {
+    it('should display N/A when the result is not available', () => {
+        // Given
+        component.result = null;
+
+        // When
+        fixture.detectChanges();
+
+        // Then
         const resultElement = fixture.debugElement.query(By.css('.calculator__result'));
         expect(resultElement.nativeElement.textContent).toBe('N/A');
+    });
+
+    it('should display the result when the result is available', () => {
+        // Given
+        component.result = 50;
+
+        // When
+        fixture.detectChanges();
+
+        // Then
+        const resultElement = fixture.debugElement.query(By.css('.calculator__result'));
+        expect(resultElement.nativeElement.textContent).toBe('50');
     });
 
     it('should have 2 number inputs', () => {
@@ -44,5 +67,19 @@ describe('CalculatorComponent', () => {
         const additionOperandSelector = fixture.debugElement.query(By.css('.calculator__operand'));
 
         expect(additionOperandSelector).not.toBeNull();
+    });
+
+    it('should update the result after computation', () => {
+        // Given
+        component.result = null;
+        component.leftValue = 5;
+        component.rightValue = 10;
+        component.operand = 'addition';
+
+        // When
+        component.compute();
+
+        // Then
+        expect(component.result).toBe(15);
     });
 });

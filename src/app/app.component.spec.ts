@@ -1,15 +1,23 @@
 /* tslint:disable:no-unused-variable */
 import { TestBed, async } from "@angular/core/testing";
+import { By } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
-import { By } from "@angular/platform-browser";
+import { CalculatorService } from "./calculator/calculator.service";
+import { FormsModule } from "@angular/forms";
 
 describe('AppComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [
+                FormsModule
+            ],
             declarations: [
                 AppComponent,
                 CalculatorComponent
+            ],
+            providers: [
+                CalculatorService
             ]
         });
         TestBed.compileComponents();

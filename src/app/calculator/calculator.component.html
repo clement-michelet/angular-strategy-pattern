@@ -1,29 +1,32 @@
 <table class="calculator calculator--table">
     <thead>
     <tr>
-        <th colspan="3" class="calculator__tooltip">Enter 2 numbers and select an operand</th>
+        <th colspan="4" class="calculator__tooltip">Enter 2 numbers and select an operand</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>
-            <input type="number" value="{{leftValue}}"/>
+            <input type="number" [(ngModel)]="leftValue" name="leftValue"/>
         </td>
         <td>
-            <select ngModel="operand" class="calculator__operand">
+            <select [(ngModel)]="operand" name="operand" class="calculator__operand">
                 <option></option>
                 <option value="addition">+</option>
             </select>
         </td>
         <td>
-            <input type="number" value="{{rightValue}}"/>
+            <input type="number" [(ngModel)]="rightValue" name="rightValue"/>
+        </td>
+        <td>
+            <button (click)="compute()">Calculate</button>
         </td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
         <th>Results:</th>
-        <th colspan="2" class="calculator__result" [class.state--invalid]="!result">{{result ? result : 'N/A'}}</th>
+        <th colspan="3" class="calculator__result" [class.state--invalid]="!result">{{result ? result : 'N/A'}}</th>
     </tr>
     </tfoot>
 </table>
