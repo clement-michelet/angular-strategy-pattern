@@ -16,6 +16,12 @@
     background: #CCCCCC;
 }
 
+.calculator--table td {
+    padding: 8px;
+    vertical-align: center;
+    text-align: center;
+}
+
 .state--invalid {
     color: red;
 }

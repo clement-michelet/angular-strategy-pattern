@@ -5,7 +5,20 @@
     </tr>
     </thead>
     <tbody>
-
+    <tr>
+        <td>
+            <input type="number" value="{{leftValue}}"/>
+        </td>
+        <td>
+            <select ngModel="operand" class="calculator__operand">
+                <option></option>
+                <option value="addition">+</option>
+            </select>
+        </td>
+        <td>
+            <input type="number" value="{{rightValue}}"/>
+        </td>
+    </tr>
     </tbody>
     <tfoot>
     <tr>

@@ -7,11 +7,13 @@ import { Component, OnInit } from "@angular/core";
 })
 export class CalculatorComponent implements OnInit {
     result: number = null;
+    leftValue: number;
+    rightValue: number;
+    operand: string;
 
     constructor() {
     }
 
     ngOnInit() {
     }
-
 }

@@ -30,7 +30,19 @@ describe('CalculatorComponent', () => {
     });
 
     it('should display by default N/A as the result', () => {
-        const tooltipElement = fixture.debugElement.query(By.css('.calculator__result'));
-        expect(tooltipElement.nativeElement.textContent).toBe('N/A');
+        const resultElement = fixture.debugElement.query(By.css('.calculator__result'));
+        expect(resultElement.nativeElement.textContent).toBe('N/A');
+    });
+
+    it('should have 2 number inputs', () => {
+        const inputElements = fixture.debugElement.queryAll(By.css('input[type=number]'));
+
+        expect(inputElements.length).toBe(2);
+    });
+
+    it('should have an addition operand selector', () => {
+        const additionOperandSelector = fixture.debugElement.query(By.css('.calculator__operand'));
+
+        expect(additionOperandSelector).not.toBeNull();
     });
 });
